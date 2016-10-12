@@ -7,9 +7,16 @@ class LanguagetoolNgramsDe < Formula
   depends_on "languagetool" => :recommended
 
   def install
+    # ngrams
     mkdir_p "ngrams/de"
     mv Dir["[0-9]*grams"], "ngrams/de/"
+    mkdir_p HOMEBREW_PREFIX/"share/ngrams"
     share.install "ngrams"
+
+    # server config file
+    (prefix/"server.properties").write <<-EOF.undent
+      languageModel=#{HOMEBREW_PREFIX}/share/ngrams
+    EOF
   end
 
   def caveats; <<-EOS.undent
@@ -18,8 +25,8 @@ class LanguagetoolNgramsDe < Formula
 
     usage:
       * Stand-alone user interface and LibreOffice/OpenOffice add-on: open the Options dialog and set the n-gram directory. For the stand-alone version you now need to restart LanguageTool.
-      * Command line: start with the --languagemodel option pointing to the ngram-index directory.
-      * Server mode: start with the --config file option. This properties file needs to have a languageModel=… entry pointing to the ngram-index directory.
+      * Command line: start with the "--languagemodel #{HOMEBREW_PREFIX}/share/ngrams" option pointing to the ngram-index directory.
+      * Server mode: start with the "--config #{HOMEBREW_PREFIX}/opt/languagetool-ngrams-de/server.properties" option. This properties file needs to have a "languageModel=#{HOMEBREW_PREFIX}/share/ngrams" entry.
     EOS
   end
 end
