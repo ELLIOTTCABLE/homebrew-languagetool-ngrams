@@ -2,7 +2,7 @@ class LanguagetoolNgramsEn < Formula
   desc "LanguageTool - n-gram data (en)"
   homepage "http://wiki.languagetool.org/finding-errors-using-n-gram-data"
   url "https://languagetool.org/download/ngram-data/ngrams-en-20150817.zip"
-  sha256 "2ab45d63cb11db42d4a7016ce6a86b886274f64ee88d2f1cc67b136bf11dec14"
+  sha256 "10e548731d9f58189fc36a553f7f685703be30da0d9bb42d1f7b5bf5f8bb232c"
 
   depends_on "languagetool" => :recommended
 
