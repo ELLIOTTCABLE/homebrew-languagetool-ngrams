@@ -14,7 +14,7 @@ class LanguagetoolNgramsEn < Formula
     share.install "ngrams"
 
     # server config file
-    (prefix/"server.properties").write <<-EOF.undent
+    (prefix/"server.properties").write <<-EOF
       languageModel=#{HOMEBREW_PREFIX}/share/ngrams
     EOF
   end
